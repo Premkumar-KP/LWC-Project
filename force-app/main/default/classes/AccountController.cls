@@ -16,7 +16,6 @@ public  class AccountController {
         Account record= new Account();
         record.Name=name;
         record.Phone=phone;
-
         Insert record;
         return record.Id;
     }
