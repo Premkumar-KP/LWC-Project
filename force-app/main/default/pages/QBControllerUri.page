@@ -1,0 +1,16 @@
+<apex:page controller="QBControllerDemo" >
+  <script>
+  window.onload=function(){
+  let code='{!$CurrentPage.parameters.code}';
+  let realmId='{!$CurrentPage.parameters.realmId}';
+  if(code && realmId){
+   alert(code);
+   alert(realmId);
+   accessTokCall();
+  }
+   }
+  </script>
+  <apex:form Id="myForm">
+  <apex:actionfunction name="accessTokCall" action="{!accessToken}" rerender="myForm"/>
+  </apex:form>
+</apex:page>
