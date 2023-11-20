@@ -1,0 +1,19 @@
+<template>
+    <lightning-card title="Employee List" icon-name="standard:account">
+        <div class="slds-m-around_medium">
+    <ul>
+        <li><strong>Working Employees:</strong></li>
+        <template for:each={workingEmployees} for:item="employee">
+          <li key={employee.name}>{employee.name} - {employee.position}</li>
+        </template>
+      </ul>
+      
+      <ul>
+        <li><strong>Non-Working Employees:</strong></li>
+        <template for:each={nonWorkingEmployees} for:item="employee">
+          <li key={employee.name}>{employee.name} - {employee.position}</li>
+        </template>
+      </ul>
+    </div>
+    </lightning-card>
+</template>

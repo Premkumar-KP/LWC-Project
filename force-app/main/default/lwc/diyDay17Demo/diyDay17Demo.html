@@ -1,0 +1,16 @@
+<template>
+    <lightning-card  variant="Narrow"  title="Wire Demo" icon-name="standard:account">
+        <div class="slds-m-around_medium">
+            <template if:true={accountsrecord}>
+                    <template for:each={accountsrecord} for:item="account">
+                        <div key={account.Id}>
+                           Name : {account.Name} - Rating : {account.Rating}
+                        </div>
+                    </template>
+            </template>
+            <template if:false={accountsrecord}>
+                Unable to Fetch The Data
+            </template>
+        </div>
+    </lightning-card>
+</template>

@@ -1,0 +1,10 @@
+<template>
+    <lightning-card  variant="Narrow"  title="Hello" icon-name="standard:account">
+       <div class="slds-m-around_medium">
+        This is a parent component
+        <br/>
+        This Message From Child Component : {messageFromChild}
+        <c-diy-day16-child-component messagefromparent={message} onselectclick={handleClickFromChild}></c-diy-day16-child-component>
+       </div>
+    </lightning-card>
+</template>

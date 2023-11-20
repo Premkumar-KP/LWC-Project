@@ -1,0 +1,23 @@
+<template>
+
+    <lightning-card title="Combo box Wire">
+        <div class="slds-var-m-around_medium">
+            <template if:true={industryOptions}>
+                <lightning-combobox
+
+                    name="Industry"
+                    label="Select Industry"
+                    value={value}
+                    options={industryOptions}
+                    onchange={handleChange} >
+
+                </lightning-combobox>
+
+                <p> Selected Value is: {value}</p>
+
+            </template>
+        </div>
+        <lightning-button variant="brand" label="Get Info" onclick={handleClick}></lightning-button>
+    </lightning-card>
+
+</template>

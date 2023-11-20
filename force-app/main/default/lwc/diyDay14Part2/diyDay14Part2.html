@@ -1,0 +1,37 @@
+<template>
+    <lightning-card title="Check Biggest Number" icon-name="standard:account">
+        <div class="slds-m-around_medium">
+           Output : {output}
+            <lightning-input
+            type="text"
+            variant="standard"
+            name="Input1"
+            onchange={handleClickInput}
+            label="Input 1">
+        </lightning-input> <br>
+
+        <lightning-input
+        type="text"
+        variant="standard"
+        name="Input2"
+        onchange={handleClickInput}
+        label="Input 2">
+        </lightning-input> <br>
+
+        <lightning-input
+        type="text"
+        variant="standard"
+        name="Input3"
+        onchange={handleClickInput}
+        label="Input 3">
+        </lightning-input> <br>
+
+        <lightning-button 
+        variant="Brand" 
+        label="Click Here To Get Output" 
+        onclick={handleClickOutput}>
+        </lightning-button> 
+
+        </div>
+    </lightning-card>
+</template>

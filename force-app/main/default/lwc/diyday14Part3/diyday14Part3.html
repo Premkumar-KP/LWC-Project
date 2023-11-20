@@ -1,0 +1,46 @@
+<template>
+    <lightning-card title="Arithmatic Operation" icon-name="standard:account">
+        <div class="slds-m-around_medium">
+           Output : {output}
+            <lightning-input
+            type="text"
+            variant="standard"
+            name="Input1"
+            onchange={handleClickInput}
+            label="Input 1">
+        </lightning-input> <br>
+
+        <lightning-input
+        type="text"
+        variant="standard"
+        name="Input2"
+        onchange={handleClickInput}
+        label="Input 2">
+    </lightning-input> <br>
+
+        <lightning-button 
+        variant="Brand" 
+        label="Add" 
+        onclick={handleClicAddition}>
+        </lightning-button> &nbsp; &nbsp; 
+
+            <lightning-button 
+            variant="Brand" 
+            label="Sub" 
+            onclick={handleClickSubtraction}> 
+            </lightning-button>  &nbsp; &nbsp;
+
+        <lightning-button 
+        variant="Brand" 
+        label="Mul" 
+        onclick={handleClickMultiplication}>
+        </lightning-button> &nbsp; &nbsp;
+
+    <lightning-button 
+    variant="Brand" 
+    label="Div" 
+    onclick={handleClickDivision}>
+    </lightning-button>
+        </div>
+    </lightning-card>
+</template>

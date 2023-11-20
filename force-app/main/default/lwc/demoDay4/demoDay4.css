@@ -1,0 +1,28 @@
+.divTextCenter{
+    Background-color: white;color: black;
+    padding: 10px;
+    border: 5px solid green;
+    border-color: green;
+    border-radius: 15px;
+    margin: 20px;
+    width: 300px;
+    text-align: center;
+}
+
+.divTextRight{
+    Background-color: white;color: black;
+    padding: 5px;
+    border: 5px solid green;
+    border-color: green;
+    border-radius: 15px;
+    text-align: right;
+}
+
+.divBackgroundGreen{
+    background-color: green;color: white;
+    padding: 5px;
+    border: 3px solid black;
+    border-color: black;
+    border-radius: 10px;
+    text-align: center;
+}

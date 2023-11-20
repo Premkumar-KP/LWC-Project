@@ -1,0 +1,14 @@
+.divBackground{
+    background-color: white;
+    background: url('https://picsum.photos/seed/picsum/200/300');
+    border: 20px;
+    padding: 50px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    margin: auto;
+    border: 10px;
+}
