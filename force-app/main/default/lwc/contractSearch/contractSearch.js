@@ -28,7 +28,6 @@ export default class ContractSearch extends LightningElement {
             searchContractsByTenant({ tenantName: this.tenantName })
                 .then(result => {
                     this.filteredData = result;
-                    console.log(this.filteredData)
                     this.showdata = true;
                     console.log('Contracts filtered successfully:', this.filteredData);
                 })
@@ -46,9 +45,7 @@ export default class ContractSearch extends LightningElement {
             searchContractsByBuilding({ buildingName: this.buildingName })
                 .then(result => {
                     this.filteredData = result;
-                    console.log(this.filteredData)
                     this.showdata = true;
-                    console.log('Contracts filtered successfully:', this.filteredData);
                 })
                 .catch(error => {
                     console.error(error);
