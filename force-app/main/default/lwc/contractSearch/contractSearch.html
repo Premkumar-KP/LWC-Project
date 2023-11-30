@@ -1,0 +1,24 @@
+<template>
+    <lightning-card title="Contract Search">
+        <div class="slds-m-around_medium">
+            <lightning-input label="Tenant Name" onchange={handleTenantNameChange}></lightning-input>
+            <lightning-button label="Search by Tenant" onclick={searchContractsByTenant}></lightning-button>
+
+            <lightning-input label="Building Name" onchange={handleBuildingNameChange}></lightning-input>
+            <lightning-button label="Search by Building" onclick={searchContractsByBuilding}></lightning-button>
+        </div>
+
+        <template if:true={showdata}>
+            <lightning-datatable
+                key-field="Id"
+                data={filteredData}
+                columns={columns}
+                hide-checkbox-column="true">
+            </lightning-datatable>
+        </template>
+
+        <template if:false={showdata}>
+            <p>No Record Found</p>
+        </template>
+    </lightning-card>
+</template>

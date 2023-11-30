@@ -1,0 +1,12 @@
+<template>
+    <lightning-card title="Create Flats">
+        <div class="slds-p-around_medium">
+            <!-- Record Form to add a new building -->
+            <lightning-record-form
+                object-api-name="Flat__c"
+                fields={FlatFields}
+                onsuccess={handleSuccess}>                
+            </lightning-record-form>
+        </div>
+    </lightning-card>
+</template>
