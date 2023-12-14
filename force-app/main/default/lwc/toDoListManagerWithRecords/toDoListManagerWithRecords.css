@@ -1,0 +1,11 @@
+.inCompletedTaskBG{
+    background-color:lightyellow;
+}
+
+.completedTaskBG{
+    background-color: lightgreen ;
+}
+
+.formatName{
+    font-size: large;
+}
