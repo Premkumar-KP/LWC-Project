@@ -1,0 +1,66 @@
+<template>
+    <div class="slds-grid slds-gutters">
+        <div class="slds-col">
+            <lightning-card title="Add New Task">
+                <div class="slds-var-p-around_small">
+                    <lightning-input type="text" label="Enter Task Name" placeholder="Enter Task Detail" required="true"
+                        message-when-value-missing="Please Enter The Task Name" onchange={onChangeHandler}
+                        name="taskname" value={taskName} class="taskname">
+                    </lightning-input>
+                    <lightning-input type="date" label="Select End Date" field-level-help="Default date is today date"
+                        onchange={onChangeHandler} name="taskdate" value={taskDate}>
+                    </lightning-input>
+                </div>
+                <div class="slds-var-p-around_small">
+                    <lightning-button label="Reset" variant="brand" onclick={resetHandler}
+                        class="slds-var-p-around_small">
+                    </lightning-button>
+                    <lightning-button label="Create Task" variant="brand" onclick={createTaskHandler}
+                        class="slds-var-p-around_small">
+                    </lightning-button>
+                </div>
+            </lightning-card>
+        </div>
+        <div class="slds-col">
+            <lightning-card title="To Do List">
+                <div class="slds-var-p-around_small">
+                    <template for:each={inCompeltedTask} for:item="currentitem" for:index="indexValue">
+                        <div key={currentitem.taskname} class="slds-box slds-theme_shade inCompletedTaskBG"
+                            draggable="true" ondragstart={dragHandler} data-item={indexValue}>
+                            <div class="slds-grid slds-wrap">
+                                <div class="slds-col slds-size_8-of-12">
+                                    <p class="formatName">{currentitem.taskname}</p>
+                                    <p><lightning-formatted-date-time value={currentitem.taskdate} year="2-digit"
+                                            month="short" day="2-digit" weekday="long"></lightning-formatted-date-time>
+                                    </p>
+                                </div>
+                                <div class="slds-col slds-size_4-of-12">
+                                    <lightning-button-icon icon-name="utility:delete" variant="bare"
+                                        alternative-text="Delete" class="slds-m-left_xx-small" title="Delete"
+                                        onclick={deleteTaskHandler} name={indexValue}></lightning-button-icon>
+                                    <lightning-button-icon icon-name="utility:check" variant="bare"
+                                        alternative-text="check" class="slds-m-left_xx-small" title="Select"
+                                        onclick={completeTaskHandler} name={indexValue}></lightning-button-icon>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </lightning-card>
+        </div>
+        <div class="slds-col">
+            <lightning-card title="Completed Task">
+                <div class="slds-var-p-around_small" ondragover={allowDropHandler} ondrop={onDropHandler}>
+                    <template for:each={compeltedTask} for:item="currentitem" for:index="index">
+                        <div key={currentitem.taskname} class="slds-box slds-theme_shade completedTaskBG">
+                            <p class="formatName">{currentitem.taskname}</p>
+                            <p><lightning-formatted-date-time value={currentitem.taskdate} year="2-digit" month="short"
+                                    day="2-digit" weekday="long"></lightning-formatted-date-time>
+                            </p>
+                        </div>
+                    </template>
+                </div>
+            </lightning-card>
+        </div>
+    </div>
+</template>
