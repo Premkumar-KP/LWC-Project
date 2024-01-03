@@ -1,22 +1,18 @@
 import { LightningElement, wire, track } from 'lwc';
-import GETALLLEADRECORDS from '@salesforce/apex/LeadController.getLeadRecords';
-import ID from '@salesforce/schema/Lead.Id';
-import NAME from '@salesforce/schema/Lead.Name';
-import RATING from '@salesforce/schema/Lead.Rating';
-import STATUS from '@salesforce/schema/Lead.Status';
-import EMAIL from '@salesforce/schema/Lead.Email';
-import COMPANY from '@salesforce/schema/Lead.Company';
+import { ShowToastEvent } from 'lightning/platformShowToastEvent';
+import { deleteRecord } from 'lightning/uiRecordApi';
+import { refreshApex } from '@salesforce/apex';
 
+import GETALLLEADRECORDS from '@salesforce/apex/LeadController.getLeadRecords';
 
 export default class CreateAccountAndContactForLead extends LightningElement {
 
     leadRecordResponse;
     leadRecords;
     selectedLeadId;
-    showNewRecord=false;
-    showEditRecord=false;
-
-    leadFields=[ID,NAME,EMAIL,COMPANY,RATING,STATUS];
+    newMode = false;
+    editMode = false;
+    showModal = false;
 
     columnsList = [
         { label: 'Name', fieldName: 'Name' },
@@ -37,25 +33,31 @@ export default class CreateAccountAndContactForLead extends LightningElement {
     }
 
     handleclickNew() {
-        this.showNewRecord=true;
-
+        this.newMode = true;
+        this.showModal = true;
     }
 
     handleclickEdit() {
-        this.showEditRecord=true;
+        this.editMode = true;
+        this.showModal = true;
     }
 
+    async handleclickDelete() {
+        try {
+            await deleteRecord(this.selectedLeadId);
+            this.showToast('Success', 'Lead Record Deleted Successfully', 'success');
+            await refreshApex(this.leadRecordResponse);
+        } catch (error) {
+            this.showToast('Error', error.body.message, 'error');
+        }
+    }
 
     handleSelect(event) {
         let selectedItem = event.detail.selectedRows;
         if (selectedItem) {
-            this.selectedLeadId=selectedItem[0].Id;
-        } 
+            this.selectedLeadId = selectedItem[0].Id;
+        }
     }
-
-    handleSuccess(){
-        this.showToast('Success','Lead Record Created Successfully','success');
-    };
 
     showToast(title, message, variant) {
         const event = new ShowToastEvent({
@@ -66,4 +68,13 @@ export default class CreateAccountAndContactForLead extends LightningElement {
         this.dispatchEvent(event);
     }
 
+    handleCloseModal() {
+        this.showModal = false;
+        this.newMode = false;
+        this.editMode = false;
+    }
+
+    successHandler() {
+        refreshApex(this.leadRecordResponse);
+    }
 }
